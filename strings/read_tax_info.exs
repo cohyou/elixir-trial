@@ -14,9 +14,9 @@ defmodule MyString do
       |> String.split(",")
       |> (fn [id, ship_to, net_amount] ->
            [
-             String.to_integer(id),
+             id |> String.to_integer,
              ship_to |> String.trim_leading(":") |> String.to_atom,
-             String.to_float(net_amount)
+             net_amount |> String.to_float
            ]
          end).()
       |> (&(Enum.zip(basic, &1))).()      
